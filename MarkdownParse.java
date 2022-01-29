@@ -11,9 +11,13 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         for (String line: markdown){
-            if(line.indexOf("[")==-1){
-                continue;
+            if(line.indexOf("[")==-1||
+                line.indexOf("]")==-1||
+                line.indexOf("(")==-1||
+                line.indexOf(")")==-1){
+                    continue;
             }
+            
             int nextOpenBracket = line.indexOf("[", currentIndex);
             int nextCloseBracket = line.indexOf("]", nextOpenBracket);
             int openParen = line.indexOf("(", nextCloseBracket);
